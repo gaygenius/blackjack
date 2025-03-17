@@ -1,0 +1,10 @@
+<h1>Backgammon</h1>
+<%= form_with url: '/games', method: :post do %>
+  <label for="player_name">Player Name:</label>
+  <%= text_field_tag :player_name, nil, id: 'player_name', required: true %>
+  <br>
+  <label for="ante">Ante:</label>
+  <%= number_field_tag :ante, nil, id: 'ante', min: 1, required: true %>
+  <br>
+  <button type="submit">Start Game</button>
+<% end %>
