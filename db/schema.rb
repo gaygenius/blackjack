@@ -10,8 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_17_212034) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_18_170421) do
   create_table "dealers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.text "cards", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

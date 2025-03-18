@@ -1,22 +1,20 @@
-class Deck
-  include ActiveModel::Model
+class Deck < ApplicationRecord
+  serialize :cards, type: Array, coder: JSON
 
-  attr_accessor :cards
+  after_initialize :initialize_deck, if: :new_record?
 
-  def initialize
-    @cards = []
+  def initialize_deck
+    self.cards = []
     Card::SUITS.each do |suit|
       Card::RANKS.each do |rank|
-        @cards << Card.new(suit, rank)
+        puts "Initializing card with suit: #{suit}, rank: #{rank}"  # Debug statement
+        self.cards << Card.new(suit, rank)
       end
     end
-  end
-
-  def shuffle
-    @cards.shuffle!
+    self.cards.shuffle!
   end
 
   def deal
-    @cards.pop
+    self.cards.pop
   end
 end
