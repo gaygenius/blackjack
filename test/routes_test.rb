@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class RoutesTest < ActionDispatch::IntegrationTest
   test "should redirect root to /games/new" do

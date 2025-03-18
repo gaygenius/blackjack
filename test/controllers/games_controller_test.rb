@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class GamesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
@@ -7,9 +7,9 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create game" do
-    assert_difference('Player.count') do
-      assert_difference('GamePlayer.count') do
-        post games_url, params: { player_name: 'John Doe', ante: 100 }
+    assert_difference("Player.count") do
+      assert_difference("GamePlayer.count") do
+        post games_url, params: { player_name: "John Doe", ante: 100 }
       end
     end
     assert_redirected_to game_path(GamePlayer.last)
