@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_18_170421) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_18_182028) do
   create_table "dealers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,6 +27,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_18_170421) do
     t.integer "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "hand", default: "--- []\n"
+    t.integer "bet", default: 0
     t.index ["game_id"], name: "index_game_players_on_game_id"
     t.index ["player_id"], name: "index_game_players_on_player_id"
   end
