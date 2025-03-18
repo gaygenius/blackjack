@@ -8,11 +8,6 @@ class Game < ApplicationRecord
     game.title = Time.now.strftime("Game on %A, %B %d, %Y at %I:%M:%S %p")  # Set a default title
     game.players ||= []  # Initialize players if nil
     game.players << player
-    if game.save
-      game
-    else
-      # Handle the error appropriately, e.g., raise an error or log it
-      raise ActiveRecord::RecordInvalid.new(game)
-    end
+    game.save
   end
 end
