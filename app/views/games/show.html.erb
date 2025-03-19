@@ -1,5 +1,7 @@
 <h1>Backgammon</h1>
 <h2> <%= @game_player.game.title %> </h2>
+<p>Cards on Deck: <%= @game_player.game.deck.cards.count %></p>
+<br>
 <p>Player: <%= @game_player.player.name %></p>
 <br>
 <% if @game_player.bet.to_i == 0 %>

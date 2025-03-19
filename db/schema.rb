@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_18_182028) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_19_190323) do
   create_table "dealers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_18_182028) do
     t.text "cards", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "game_id", null: false
+    t.index ["game_id"], name: "index_decks_on_game_id"
   end
 
   create_table "game_players", force: :cascade do |t|
@@ -27,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_18_182028) do
     t.integer "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "hand", default: "--- []\n"
+    t.text "hand", default: "[]"
     t.integer "bet", default: 0
     t.index ["game_id"], name: "index_game_players_on_game_id"
     t.index ["player_id"], name: "index_game_players_on_player_id"
@@ -45,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_18_182028) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "decks", "games"
   add_foreign_key "game_players", "games"
   add_foreign_key "game_players", "players"
 end

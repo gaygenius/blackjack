@@ -1,4 +1,6 @@
 class Deck < ApplicationRecord
+  belongs_to :game
+
   serialize :cards, type: Array, coder: JSON
 
   after_initialize :initialize_deck, if: :new_record?
@@ -7,7 +9,6 @@ class Deck < ApplicationRecord
     self.cards = []
     Card::SUITS.each do |suit|
       Card::RANKS.each do |rank|
-        puts "Initializing card with suit: #{suit}, rank: #{rank}"  # Debug statement
         self.cards << Card.new(suit, rank)
       end
     end
