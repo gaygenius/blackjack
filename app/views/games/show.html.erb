@@ -13,5 +13,12 @@
   <% end %>
 <% else %>
   <p>Bet: <%= @game_player.bet %></p>
+  <br>
+  <p>Hand</p>
+  <ul>
+    <% @game_player.hand.each do |card| %>
+      <li><%= card.rank %> of <%= card.suit %></li>
+    <% end %>
+  </ul>
 <% end %>
 <br>

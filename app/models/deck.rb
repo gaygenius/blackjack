@@ -1,7 +1,7 @@
 class Deck < ApplicationRecord
   belongs_to :game
 
-  serialize :cards, type: Array, coder: JSON
+  serialize :cards, type: Array, coder: CardCoder
 
   after_initialize :initialize_deck, if: :new_record?
 

@@ -15,6 +15,7 @@ class GamesController < ApplicationController
   def ante
     @game_player = GamePlayer.find(params[:id])
     @game_player.update!(bet: params[:ante])
+    @game_player.start_game
     redirect_to game_path(@game_player)
   end
 end
