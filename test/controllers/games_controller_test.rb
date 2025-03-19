@@ -9,7 +9,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
   test "should create game" do
     assert_difference("Player.count") do
       assert_difference("GamePlayer.count") do
-        post games_url, params: { player_name: "John Doe", ante: 100 }
+        post games_url, params: { player_name: "John Doe" }
       end
     end
     assert_redirected_to game_path(GamePlayer.last)

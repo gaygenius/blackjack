@@ -1,3 +1,15 @@
 <h1>Backgammon</h1>
 <h2> <%= @game_player.game.title %> </h2>
-<p>Player: <%= @game_player.player.name %>, Bet: <%= @game_player.bet %></p>
+<p>Player: <%= @game_player.player.name %></p>
+<br>
+<% if @game_player.bet.to_i == 0 %>
+  <%= form_with url: ante_path, method: :post do %>
+    <label for="ante">Ante:</label>
+    <%= number_field_tag :ante, nil, id: 'ante', min: 1, required: true %>
+    <br>
+    <button type="submit">Submit Ante</button>
+  <% end %>
+<% else %>
+  <p>Bet: <%= @game_player.bet %></p>
+<% end %>
+<br>
