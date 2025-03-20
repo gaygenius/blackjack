@@ -2,7 +2,7 @@
 <h2> <%= @game_player.game.title %> </h2>
 <p><%= @game_player.game.deck.cards.count %> Cards in the Deck</p>
 <br>
-<p>Dealer</p>
+<p>Dealer, Points: <%= @game_player.game.dealer.points.join(", ") %></p>
 <ul class="cards">
   <% @game_player.game.dealer.hand.each_with_index do |card, index| %>
     <% if index == 0 %>
