@@ -3,7 +3,13 @@ Rails.application.routes.draw do
 
   resources :games, except: [ :index ]
 
-  post "games/:id/ante" => "games#ante", as: :ante
+  resources :games do
+    member do
+      post 'ante', to: 'games#ante', as: 'ante'
+      post 'hit', to: 'games#hit', as: 'hit'
+      post 'stand', to: 'games#stand', as: 'stand'
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -2,22 +2,20 @@
 <h2> <%= @game_player.game.title %> </h2>
 <p><%= @game_player.game.deck.cards.count %> Cards in the Deck</p>
 <br>
-<% if @game_player.game.dealer %>
-  <p>Dealer</p>
-  <ul>
-    <% @game_player.game.dealer.hand.each_with_index do |card, index| %>
-      <% if index == 0 %>
-        <li>Face Down</li>
-      <% else %>
-        <li><%= card.rank %> of <%= card.suit %></li>
-      <% end %>
+<p>Dealer</p>
+<ul>
+  <% @game_player.game.dealer.hand.each_with_index do |card, index| %>
+    <% if index == 0 %>
+      <li>Face Down</li>
+    <% else %>
+      <li><%= card.rank %> of <%= card.suit %></li>
     <% end %>
-  </ul>
-  <br>
-<% end %>
+  <% end %>
+</ul>
+<br>
 <p>Player: <%= @game_player.player.name %></p>
 <% if @game_player.bet.to_i == 0 %>
-  <%= form_with url: ante_path, method: :post do %>
+  <%= form_with url: ante_game_path(@game_player), method: :post do %>
     <label for="ante">Ante:</label>
     <%= number_field_tag :ante, nil, id: 'ante', min: 1, required: true %>
     <br>
@@ -25,10 +23,16 @@
   <% end %>
 <% else %>
   <p>Bet: <%= @game_player.bet %></p>
-  <% end %>
+<% end %>
 <ul>
   <% @game_player.hand.each do |card| %>
     <li><%= card.rank %> of <%= card.suit %></li>
   <% end %>
 </ul>
 <br>
+<%= form_with url: hit_game_path(@game_player), method: :post do %>
+  <button type="submit">Hit</button>
+<% end %>
+<%= form_with url: stand_game_path(@game_player), method: :post do %>
+  <button type="submit">Stand</button>
+<% end %>

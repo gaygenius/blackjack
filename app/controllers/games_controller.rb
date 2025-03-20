@@ -17,4 +17,10 @@ class GamesController < ApplicationController
     @game_player.set_ante!(ante: params[:ante])
     redirect_to game_path(@game_player)
   end
+
+  def hit
+    @game_player = GamePlayer.find(params[:id])
+    @game_player.hit!
+    redirect_to game_path(@game_player)
+  end
 end

@@ -17,4 +17,9 @@ class GamePlayer < ApplicationRecord
   def set_ante!(ante:)
     self.update!(bet: ante)
   end
+
+  def hit!
+    self.hand << self.game.deck.deal
+    self.save
+  end
 end
