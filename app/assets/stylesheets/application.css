@@ -8,3 +8,32 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* Add your application-wide styles here */
+
+/* Example styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #343a40;
+}
+
+/* Add more styles as needed */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.card {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

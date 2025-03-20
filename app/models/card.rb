@@ -8,4 +8,15 @@ class Card
     @suit = suit
     @rank = rank
   end
+
+  def points
+    case rank
+    when "A"
+      11
+    when "K", "Q", "J"
+      10
+    else
+      rank.to_i
+    end
+  end
 end
