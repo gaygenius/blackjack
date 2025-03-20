@@ -9,6 +9,14 @@ class Card
     @rank = rank
   end
 
+  def ace?
+    rank == "A"
+  end
+
+  def face_card?
+    %w[K Q J].include?(rank)
+  end
+
   def points
     case rank
     when "A"
