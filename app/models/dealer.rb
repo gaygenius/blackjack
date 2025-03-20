@@ -5,6 +5,6 @@ class Dealer < ApplicationRecord
   after_initialize :initialize_dealer, if: :new_record?
 
   def initialize_dealer
-    self.hand = [self.game.deck.deal, self.game.deck.deal]
+    self.hand = [ self.game.deck.deal, self.game.deck.deal ]
   end
 end
