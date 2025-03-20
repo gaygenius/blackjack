@@ -16,6 +16,8 @@ class Deck < ApplicationRecord
   end
 
   def deal
-    self.cards.pop
+    card = self.cards.pop
+    self.save!
+    card
   end
 end

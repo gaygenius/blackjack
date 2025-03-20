@@ -10,10 +10,11 @@ class GamePlayer < ApplicationRecord
     game_player.game = game
     game_player.player = player
     game_player.save
+    game_player.update!(hand: [game.deck.deal, game.deck.deal])
     game_player
   end
 
-  def start_game
-    self.update!(hand: [self.game.deck.deal, self.game.deck.deal])
+  def set_ante!(ante:)
+    self.update!(bet: ante)
   end
 end

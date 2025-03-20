@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_19_190323) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_19_215357) do
   create_table "dealers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "game_id", null: false
+    t.text "hand", default: "[]"
+    t.integer "bet", default: 0
+    t.index ["game_id"], name: "index_dealers_on_game_id"
   end
 
   create_table "decks", force: :cascade do |t|
@@ -47,6 +51,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_190323) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "dealers", "games"
   add_foreign_key "decks", "games"
   add_foreign_key "game_players", "games"
   add_foreign_key "game_players", "players"

@@ -9,6 +9,8 @@ class Game < ApplicationRecord
   def initialize_game
     self.title = Time.now.strftime("Game on %A, %B %d, %Y at %I:%M:%S %p")  # Set a default title
     self.players = []
-    self.deck = Deck.new
+    self.build_deck
+    self.build_dealer
+    self.save!
   end
 end

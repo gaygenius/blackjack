@@ -1,9 +1,21 @@
 <h1>Backgammon</h1>
 <h2> <%= @game_player.game.title %> </h2>
-<p>Cards on Deck: <%= @game_player.game.deck.cards.count %></p>
+<p><%= @game_player.game.deck.cards.count %> Cards in the Deck</p>
 <br>
+<% if @game_player.game.dealer %>
+  <p>Dealer</p>
+  <ul>
+    <% @game_player.game.dealer.hand.each_with_index do |card, index| %>
+      <% if index == 0 %>
+        <li>Face Down</li>
+      <% else %>
+        <li><%= card.rank %> of <%= card.suit %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
 <p>Player: <%= @game_player.player.name %></p>
-<br>
 <% if @game_player.bet.to_i == 0 %>
   <%= form_with url: ante_path, method: :post do %>
     <label for="ante">Ante:</label>
@@ -13,12 +25,10 @@
   <% end %>
 <% else %>
   <p>Bet: <%= @game_player.bet %></p>
-  <br>
-  <p>Hand</p>
-  <ul>
-    <% @game_player.hand.each do |card| %>
-      <li><%= card.rank %> of <%= card.suit %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% end %>
+<ul>
+  <% @game_player.hand.each do |card| %>
+    <li><%= card.rank %> of <%= card.suit %></li>
+  <% end %>
+</ul>
 <br>
